@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1677338687 source:c:\users\samuele\documents\github\progetto_kayt-snowborder\kayt_snowboarding\main.cpp
+	<iostream>
+	<cmath>
+	<time.h>
+

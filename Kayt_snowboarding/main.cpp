@@ -1,13 +1,21 @@
 #include <iostream>
+#include <cmath>
+#include <time.h>
 
 using namespace std;
 
 struct caratteristicheSnowboarder{
-    int x;
-    int y;
+    int xa;
+    int ya;
+    int xb;
+    int yb;
     string cognome;
     string matricola;
 };
+
+void generazioneCoordinate(){
+
+}
 
 int main()
 {
