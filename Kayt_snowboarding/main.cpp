@@ -5,20 +5,28 @@
 using namespace std;
 
 struct caratteristicheSnowboarder{
-    int xa;
-    int ya;
+    int xa=0;
+    int ya=0;
     int xb;
     int yb;
     string cognome;
     string matricola;
 };
 
-void generazioneCoordinate(){
+void generazioneCoordinate(caratteristicheSnowboarder snowboarder){
+    srand(time(NULL));
+    float distanzaParziale;
 
+    for(int i = 0; i < 30; i++){
+        snowboarder.xb = rand()%101;
+        snowboarder.yb = rand()%101;
+        distanzaParziale = sqrt(pow((snowboarder.xb-snowboarder.xa),2)+pow((snowboarder.yb-snowboarder.ya),2));
+    }
 }
 
 int main()
 {
+    caratteristicheSnowboarder snowboarder;
     int scelta;
 
     while(true){
@@ -29,7 +37,7 @@ int main()
         cin>>scelta;
         switch(scelta){
             case 1:
-
+                generazioneCoordinate(snowboarder);
                 break;
             case 2:
                 break;
