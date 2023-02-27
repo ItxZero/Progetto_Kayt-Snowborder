@@ -15,7 +15,6 @@ struct caratteristicheSnowboarder{
 
 void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
     ifstream fin("ListaCognomi.txt", ios::in);
-    ofstream fout("ListaCognomi.txt", ios::out);
     int distanzaAttuale = 0;
     float distanzaParziale;
 
@@ -33,6 +32,7 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
     for(int j = 0; j < 10; j++){
         snowboarder[j].x[0] = 0;
         snowboarder[j].y[0] = 0;
+
         for(int i = 1; i < 30; i++){
             snowboarder[j].x[i] = rand()%101;
             snowboarder[j].y[i] = rand()%101;
@@ -41,14 +41,20 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
         }
         snowboarder[j].distanzaTot = distanzaAttuale;
     }
-
+    fin.close();
 }
 
-void stampaLista(){
-    cout<<"     Podio   ";
+void stampaLista(caratteristicheSnowboarder snowboarder[10]){
+    fstream fout("ListaCognomi.txt", ios::app);
 
-    cout<<"     Podio   ";
+    for(int i = 0; i < 10; i++){
+        fout<<snowboarder[i].cognome<<",";
+        fout<<snowboarder[i].matricola<<",";
+        fout<<snowboarder[i].distanzaTot<<"\n";
+    }
+    //cout<<"     Podio   ";
 
+    fout.close();
 }
 
 int main()
@@ -67,10 +73,10 @@ int main()
                 generazioneCoordinateECalcolo(snowboarder);
                 break;
             case 2:
+                stampaLista(snowboarder);
                 break;
             case 3:
                 return 0;
-                break;
         }
     }
 }
