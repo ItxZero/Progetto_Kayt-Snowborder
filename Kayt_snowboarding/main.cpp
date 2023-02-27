@@ -75,6 +75,20 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
 
 
 }
+
+/*!
+ \fn exchange
+ \brief cambia le posizioni dei due snowboarder in classifica
+ */
+ void exchange(caratteristicheSnowboarder &a, caratteristicheSnowboarder &b) {
+     //! \var c
+     //! \brief appoggio
+    caratteristicheSnowboarder c;
+    c = a;
+    a = b;
+    b = c;
+}
+
 /*!
  \fn stampaLista
  \brief scrittura in un altro file i cognomi,le matricole e le distanze corrispettive di ogni snowboarder
@@ -85,18 +99,26 @@ void stampaLista(caratteristicheSnowboarder snowboarder[10]){
     //! \brief apertura in scrittura del file
     fstream fout("/Users/Samuele/Documents/GitHub/Progetto_Kayt-Snowborder/Kayt_snowboarding/ListaSnowboarder.txt", ios::out);
 
-    //! \brief scrittura nel "ListaSnowboarder"
+    //! \brief scrittura nel file "ListaSnowboarder"
     for(int i = 0; i < 10; i++){
         fout<<snowboarder[i].cognome<<",";
         fout<<snowboarder[i].matricola<<",";
         fout<<snowboarder[i].distanzaTot<<"\n";
     }
-    for(int j = 0; j<2;j++) {
-        for (int i = 0; i < 10; i++) {
-
+    //! \brief cambio
+    for(int j = 0;j < 9; j++){
+        for (int i = j + 1; i < 10; i++) {
+            if (snowboarder[j].distanzaTot < snowboarder[i].distanzaTot) {
+                exchange(snowboarder[i], snowboarder[j]);
+            }
         }
     }
-    //cout<<"     Podio   ";
+    //! \brief stampa del podio
+    for(int i= 0; i<3; i++){
+        cout<<snowboarder[i].cognome<<",";
+        cout<<snowboarder[i].matricola<<",";
+        cout<<snowboarder[i].distanzaTot<<"\n";
+    }
 
     fout.close();
 }
@@ -123,7 +145,7 @@ int main()
         cin>>scelta;
         switch(scelta){
             case 1:
-                cout<<"La gara e' cominciata! ";
+                cout<<"La gara e' cominciata! \n";
                 generazioneCoordinateECalcolo(snowboarder);
                 break;
             case 2:
