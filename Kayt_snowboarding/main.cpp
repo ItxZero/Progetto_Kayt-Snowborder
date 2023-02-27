@@ -24,6 +24,7 @@ struct caratteristicheSnowboarder{
     int matricola;
 };
 /*!
+ \class generazioneCoordinateECalcolo
  \fn generazioneCoordinateECalcolo
  \brief funzione dove si calcola la distanza percorsa e si assegna agli snowboarder una matricola
  */
@@ -90,6 +91,7 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
 }
 
 /*!
+ \class stampaLista
  \fn stampaLista
  \brief scrittura in un altro file i cognomi,le matricole e le distanze corrispettive di ogni snowboarder
  */
@@ -124,6 +126,7 @@ void stampaLista(caratteristicheSnowboarder snowboarder[10]){
 }
 
 /*!
+ \class main
  \fn main
  \brief e' letteralmente il main, con tanto di menu' semplice dove vengono richiamate le corrispettive funzioni per il correttto funzionamento del programma
  */
