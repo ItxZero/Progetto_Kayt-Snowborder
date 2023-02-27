@@ -41,6 +41,11 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
         }
         snowboarder[j].distanzaTot = distanzaAttuale;
     }
+    for(int j = 0; j<2;j++) {
+        for (int i = 0; i < 10; i++) {
+
+        }
+    }
 
     fin.close();
 }
