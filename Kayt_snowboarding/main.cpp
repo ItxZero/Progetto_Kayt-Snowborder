@@ -8,15 +8,13 @@ using namespace std;
 /*!
  \file Kayt_snowboarding
  \brief simulazione di una gara di kayt snowboarding con relativo podio delle posizioni
- \
  \ @author     Samuele Savino
  \ @copyright  (C)2023, Samuele Savino
  */
 
  /*!
- \file Kayt_snowboarding
- \brief simulazione di una gara di kayt snowboarding con relativo podio delle posizioni
- \
+ \class caratteristicheSnowboarder
+ \brief struttura dove si definiscono 30 coordinate dei punti in 2 array diversi, cognome, matricola e distanza totale percorsa daglli snowboarder
  */
 struct caratteristicheSnowboarder{
     int x[30];
@@ -25,11 +23,20 @@ struct caratteristicheSnowboarder{
     string cognome;
     int matricola;
 };
-
+/*!
+ \fn generazioneCoordinateECalcolo
+ \brief funzione dove si calcola la distanza percorsa e si assegna agli snowboarder una matricola
+ */
 void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
+    //! \var distanzaAttuale
+    //! \brief variabile d'appoggio dove si effettuerano il calcolo di ogni punto progressivo
     int distanzaAttuale = 0;
+    //! \var distanzaParziale
+    //! \brief variabile dove si calcolerà solo la distanza da punto "a" punto "b"
     float distanzaParziale;
 
+    //! \var fin
+    //! \brief apertura file in lettura e relativo controllo su di essa
     ifstream fin("C:/Users/Samuele/Documents/GitHub/Progetto_Kayt-Snowborder/Kayt_snowboarding/ListaCognomi.txt", ios::in);
     if(!fin){
         cout << "Il file \"ListaCognomi.txt\" non esiste!" << endl;
@@ -38,6 +45,10 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
 
     srand(time(NULL));
 
+    //! \var matric
+    //! \brief generazione casuale della matricola
+    //! \var h
+    //! \brief contatore temporaneo per far avanzare ad ogni ciclo lo snowboarder
     int matric,h=0;
     while(!fin.eof()){
         getline(fin,snowboarder[h].cognome); //lettura dei cognomi dal file
@@ -47,7 +58,7 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
     }
     fin.close();
 
-
+    //! \brief 2 if annidati per il calcolo della distanza totale di 30 punti per ogni snowboarder
     for (int j = 0; j < 10; j++) {
         snowboarder[j].x[0] = 0;
         snowboarder[j].y[0] = 0;
@@ -62,32 +73,48 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
         snowboarder[j].distanzaTot = distanzaAttuale;
     }
 
-    for(int j = 0; j<2;j++) {
-        for (int i = 0; i < 10; i++) {
 
-        }
-    }
 }
+/*!
+ \fn stampaLista
+ \brief scrittura in un altro file i cognomi,le matricole e le distanze corrispettive di ogni snowboarder
+ */
 
 void stampaLista(caratteristicheSnowboarder snowboarder[10]){
+    //! \var fout
+    //! \brief apertura in scrittura del file
     fstream fout("/Users/Samuele/Documents/GitHub/Progetto_Kayt-Snowborder/Kayt_snowboarding/ListaSnowboarder.txt", ios::out);
 
+    //! \brief scrittura nel "ListaSnowboarder"
     for(int i = 0; i < 10; i++){
         fout<<snowboarder[i].cognome<<",";
         fout<<snowboarder[i].matricola<<",";
         fout<<snowboarder[i].distanzaTot<<"\n";
+    }
+    for(int j = 0; j<2;j++) {
+        for (int i = 0; i < 10; i++) {
+
+        }
     }
     //cout<<"     Podio   ";
 
     fout.close();
 }
 
-
+/*!
+ \fn main
+ \brief e' letteralmente il main, con tanto di menu' semplice dove vengono richiamate le corrispettive funzioni per il correttto funzionamento del programma
+ */
 int main()
 {
+    //! \var snowboarder
+    //! \brief vettore della struct
     caratteristicheSnowboarder snowboarder[10];
+    //! \var scelta
+    //! \brief variabile per la selezione nel menu'
     int scelta;
 
+    //! \brief menu' con i relativi casi
     while(true){
         cout<<"     Menu       "<<endl;
         cout<<"1- Avvio della gara"<<endl;
@@ -96,6 +123,7 @@ int main()
         cin>>scelta;
         switch(scelta){
             case 1:
+                cout<<"La gara e' cominciata! ";
                 generazioneCoordinateECalcolo(snowboarder);
                 break;
             case 2:
