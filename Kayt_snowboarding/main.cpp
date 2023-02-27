@@ -18,29 +18,30 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
     int distanzaAttuale = 0;
     float distanzaParziale;
 
-
+    int matric,h=0;
     while(!fin.eof()){
-        int i=0,matric;
-        getline(fin,snowboarder[i].cognome); //lettura dei cognomi dal file
+        getline(fin,snowboarder[h].cognome); //lettura dei cognomi dal file
         matric = rand()%200;
-        snowboarder[i].matricola = matric; //immissione di una matricola casuale nel vettore
-        i++;
+        snowboarder[h].matricola = matric; //immissione di una matricola casuale nel vettore
+        h++;
     }
 
     srand(time(NULL));
 
-    for(int j = 0; j < 10; j++){
+    for (int j = 0; j < 10; j++) {
         snowboarder[j].x[0] = 0;
         snowboarder[j].y[0] = 0;
-
-        for(int i = 1; i < 30; i++){
-            snowboarder[j].x[i] = rand()%101;
-            snowboarder[j].y[i] = rand()%101;
-            distanzaParziale = sqrt(pow((snowboarder[j].x[i]-snowboarder[j].x[i-1]),2)+pow((snowboarder[j].y[i]-snowboarder[j].y[i-1]),2)); //calcolo della distanza parziale
+        distanzaAttuale = 0; // reimposta la distanza attuale a zero
+        for (int i = 1; i < 30; i++) {
+            // genera le coordinate casuali e calcola la distanza parziale
+            snowboarder[j].x[i] = rand() % 101;
+            snowboarder[j].y[i] = rand() % 101;
+            distanzaParziale = sqrt(pow((snowboarder[j].x[i] - snowboarder[j].x[i - 1]), 2) + pow((snowboarder[j].y[i] - snowboarder[j].y[i - 1]), 2));
             distanzaAttuale = distanzaAttuale + distanzaParziale;
         }
         snowboarder[j].distanzaTot = distanzaAttuale;
     }
+
     fin.close();
 }
 
