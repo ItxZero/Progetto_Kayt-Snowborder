@@ -5,6 +5,19 @@
 
 using namespace std;
 
+/*!
+ \file Kayt_snowboarding
+ \brief simulazione di una gara di kayt snowboarding con relativo podio delle posizioni
+ \
+ \ @author     Samuele Savino
+ \ @copyright  (C)2023, Samuele Savino
+ */
+
+ /*!
+ \file Kayt_snowboarding
+ \brief simulazione di una gara di kayt snowboarding con relativo podio delle posizioni
+ \
+ */
 struct caratteristicheSnowboarder{
     int x[30];
     int y[30];
@@ -17,7 +30,7 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
     int distanzaAttuale = 0;
     float distanzaParziale;
 
-    ifstream fin("ListaCognomi.txt", ios::in);
+    ifstream fin("C:/Users/Samuele/Documents/GitHub/Progetto_Kayt-Snowborder/Kayt_snowboarding/ListaCognomi.txt", ios::in);
     if(!fin){
         cout << "Il file \"ListaCognomi.txt\" non esiste!" << endl;
         return;
@@ -57,7 +70,7 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
 }
 
 void stampaLista(caratteristicheSnowboarder snowboarder[10]){
-    fstream fout("ListaCognomi.txt", ios::out);
+    fstream fout("/Users/Samuele/Documents/GitHub/Progetto_Kayt-Snowborder/Kayt_snowboarding/ListaSnowboarder.txt", ios::out);
 
     for(int i = 0; i < 10; i++){
         fout<<snowboarder[i].cognome<<",";

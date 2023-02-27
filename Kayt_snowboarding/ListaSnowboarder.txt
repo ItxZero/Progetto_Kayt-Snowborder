@@ -1,0 +1,10 @@
+Rossi,113,1341
+Ferrari,112,1629
+Esposito,198,1441
+Bruno,197,1428
+Barbieri,102,1706
+Giordano,110,1594
+Grassi,95,1348
+Farina,68,1349
+Ricci,174,1415
+Mancini,76,1479
