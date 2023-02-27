@@ -10,23 +10,30 @@ struct caratteristicheSnowboarder{
     int y[30];
     int distanzaTot;
     string cognome;
-    string matricola;
+    int matricola;
 };
 
 void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
-    ifstream fin("ListaCognomi.txt", ios::in);
     int distanzaAttuale = 0;
     float distanzaParziale;
+
+    ifstream fin("ListaCognomi.txt", ios::in);
+    if(!fin){
+        cout << "Il file \"ListaCognomi.txt\" non esiste!" << endl;
+        return;
+    }
+
+    srand(time(NULL));
 
     int matric,h=0;
     while(!fin.eof()){
         getline(fin,snowboarder[h].cognome); //lettura dei cognomi dal file
-        matric = rand()%200;
+        matric = rand()%201;
         snowboarder[h].matricola = matric; //immissione di una matricola casuale nel vettore
         h++;
     }
+    fin.close();
 
-    srand(time(NULL));
 
     for (int j = 0; j < 10; j++) {
         snowboarder[j].x[0] = 0;
@@ -41,17 +48,16 @@ void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder[10]){
         }
         snowboarder[j].distanzaTot = distanzaAttuale;
     }
+
     for(int j = 0; j<2;j++) {
         for (int i = 0; i < 10; i++) {
 
         }
     }
-
-    fin.close();
 }
 
 void stampaLista(caratteristicheSnowboarder snowboarder[10]){
-    fstream fout("ListaCognomi.txt", ios::app);
+    fstream fout("ListaCognomi.txt", ios::out);
 
     for(int i = 0; i < 10; i++){
         fout<<snowboarder[i].cognome<<",";
@@ -62,6 +68,7 @@ void stampaLista(caratteristicheSnowboarder snowboarder[10]){
 
     fout.close();
 }
+
 
 int main()
 {
