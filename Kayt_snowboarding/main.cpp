@@ -13,7 +13,7 @@ struct caratteristicheSnowboarder{
     string matricola;
 };
 
-void generazioneCoordinate(caratteristicheSnowboarder snowboarder){
+void generazioneCoordinateECalcolo(caratteristicheSnowboarder snowboarder){
     srand(time(NULL));
     float distanzaParziale;
 
@@ -22,6 +22,11 @@ void generazioneCoordinate(caratteristicheSnowboarder snowboarder){
         snowboarder.yb = rand()%101;
         distanzaParziale = sqrt(pow((snowboarder.xb-snowboarder.xa),2)+pow((snowboarder.yb-snowboarder.ya),2));
     }
+
+}
+
+void stampaLista(){
+
 }
 
 int main()
@@ -37,7 +42,7 @@ int main()
         cin>>scelta;
         switch(scelta){
             case 1:
-                generazioneCoordinate(snowboarder);
+                generazioneCoordinateECalcolo(snowboarder);
                 break;
             case 2:
                 break;
